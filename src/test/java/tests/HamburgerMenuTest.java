@@ -26,4 +26,46 @@ public class HamburgerMenuTest extends BaseTest {
         Assert.assertEquals(navbarPage.hamburgerMenuItems.get(2).getText(), "Logout");
         Assert.assertEquals(navbarPage.hamburgerMenuItems.getLast().getText(), "Reset App State");
     }
+
+    @Test
+    public void userCanClickOnFirstHamburgerItem() {
+        navbarPage.clickOnShoppingCart();
+        navbarPage.clickOnHamburgerMenu();
+
+        waitForAllElementsVisibility(navbarPage.hamburgerMenuItems);
+        navbarPage.clickOnHamburgerMenuItem("All Items");
+
+        Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/inventory.html");
+        Assert.assertFalse(isElementDisplayed(navbarPage.hamburgerMenuItems.getFirst()));
+    }
+
+    @Test
+    public void userCanClickOnSecondHamburgerItem() {
+        navbarPage.clickOnHamburgerMenu();
+
+        waitForAllElementsVisibility(navbarPage.hamburgerMenuItems);
+        navbarPage.clickOnHamburgerMenuItem("About");
+
+        Assert.assertEquals(driver.getCurrentUrl(), "https://saucelabs.com/");
+    }
+
+    @Test
+    public void userCanClickOnThirdHamburgerItem() {
+        navbarPage.clickOnHamburgerMenu();
+
+        waitForAllElementsVisibility(navbarPage.hamburgerMenuItems);
+        navbarPage.clickOnHamburgerMenuItem("Logout");
+
+        Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/");
+        Assert.assertTrue(loginPage.isLoginButtonDisplayed());
+    }
+
+    @Test
+    public void userCanClickOnFourthHamburgerItem() {
+        inventoryPage.addProductInCart( "Sauce Labs Onesie");
+        resetAppState();
+
+        Assert.assertFalse(isElementDisplayed(navbarPage.hamburgerMenuItems.getFirst()));
+        Assert.assertFalse(isElementDisplayed(navbarPage.shoppingCartBadge));
+    }
 }
