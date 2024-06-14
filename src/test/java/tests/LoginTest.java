@@ -18,6 +18,8 @@ public class LoginTest extends BaseTest {
         loginUserWithCredentials("standard_user", "secret_sauce");
 
         Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/inventory.html");
+        Assert.assertEquals(navbarPage.getTitleText(), "Products");
+        Assert.assertTrue(navbarPage.isShoppingCartDisplayed());
     }
 
     @Test
