@@ -16,7 +16,7 @@ public class NavbarPage extends BaseTest {
     @FindBy(id = "react-burger-menu-btn")
     public WebElement hamburgerMenu;
 
-    @FindBy(className = ".bm-item")
+    @FindBy(className = "bm-item")
     public List<WebElement> hamburgerMenuItems;
 
     @FindBy(css = "[data-test='title']")
@@ -32,6 +32,8 @@ public class NavbarPage extends BaseTest {
     }
 
     public void clickOnHamburgerMenuItem(String itemName) {
+        waitForAllElementsVisibility(hamburgerMenuItems);
+
         for(WebElement item : hamburgerMenuItems) {
             if(item.getText().equals(itemName)) {
                 item.click();
