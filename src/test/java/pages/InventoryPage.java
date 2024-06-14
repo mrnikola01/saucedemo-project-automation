@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class InventoryPage extends BaseTest {
@@ -24,11 +23,24 @@ public class InventoryPage extends BaseTest {
         return product.findElement(By.className("inventory_item_name")).getText();
     }
 
+    public String getProductPrice(WebElement product) {
+        return product.findElement(By.className("inventory_item_price")).getText();
+    }
+
     public void clickOnProductButton(WebElement product) {
         product.findElement(By.className("btn_inventory")).click();
     }
 
     public void addProductInCart(String productName) {
+        for(WebElement product : products) {
+            if(getProductName(product).equals(productName)) {
+                clickOnProductButton(product);
+                break;
+            }
+        }
+    }
+
+    public void removeProductFromCart(String productName) {
         for(WebElement product : products) {
             if(getProductName(product).equals(productName)) {
                 clickOnProductButton(product);

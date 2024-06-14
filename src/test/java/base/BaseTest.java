@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import pages.CartPage;
 import pages.InventoryPage;
 import pages.LoginPage;
 import pages.NavbarPage;
@@ -22,6 +23,7 @@ public class BaseTest {
     public LoginPage loginPage;
     public NavbarPage navbarPage;
     public InventoryPage inventoryPage;
+    public CartPage cartPage;
 
     @BeforeClass
     public void setUp() {
@@ -31,6 +33,7 @@ public class BaseTest {
         loginPage = new LoginPage();
         navbarPage = new NavbarPage();
         inventoryPage = new InventoryPage();
+        cartPage = new CartPage();
     }
 
     @AfterClass
@@ -45,6 +48,12 @@ public class BaseTest {
         loginPage.clickOnLoginButton();
     }
 
+    public void resetAppState() {
+        navbarPage.clickOnHamburgerMenu();
+        navbarPage.clickOnHamburgerMenuItem("Reset App State");
+        driver.navigate().refresh();
+    }
+
     public void scrollIntoElementView(WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", element);
@@ -56,5 +65,16 @@ public class BaseTest {
 
     public void waitForElementVisibility(WebElement element) {
         wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public boolean isElementDisplayed(WebElement element) {
+        boolean elementIsDisplayed = false;
+        try {
+            elementIsDisplayed = element.isDisplayed();
+        } catch(Exception ignored) {
+
+        }
+
+        return elementIsDisplayed;
     }
 }
