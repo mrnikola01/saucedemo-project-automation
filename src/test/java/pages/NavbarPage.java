@@ -25,6 +25,9 @@ public class NavbarPage extends BaseTest {
     @FindBy(id = "shopping_cart_container")
     public WebElement shoppingCart;
 
+    @FindBy(css = "[data-test='shopping-cart-badge']")
+    public WebElement shoppingCartBadge;
+
     //-------------------------------------------------------------------------
 
     public void clickOnHamburgerMenu() {
@@ -52,5 +55,9 @@ public class NavbarPage extends BaseTest {
 
     public String getTitleText() {
         return title.getText();
+    }
+
+    public String getShoppingCartBadgeText() {
+        return shoppingCartBadge.getText();
     }
 }
