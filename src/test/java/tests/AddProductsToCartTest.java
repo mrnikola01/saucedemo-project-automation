@@ -12,13 +12,13 @@ public class AddProductsToCartTest extends BaseTest {
     public void pageSetUp() {
         driver.manage().window().maximize();
         driver.get("https://www.saucedemo.com/");
+
+        loginUserWithCredentials("standard_user", "secret_sauce");
+        resetAppState();
     }
 
     @Test(priority = 10)
     public void userCanAddProductInCart() {
-        loginUserWithCredentials("standard_user", "secret_sauce");
-        resetAppState();
-
         inventoryPage.addProductInCart("Sauce Labs Bolt T-Shirt");
 
         Assert.assertEquals(navbarPage.getShoppingCartBadgeText(), "1");
@@ -26,9 +26,6 @@ public class AddProductsToCartTest extends BaseTest {
 
     @Test(priority = 20)
     public void userCanAddMoreProductsInCart() {
-        loginUserWithCredentials("standard_user", "secret_sauce");
-        resetAppState();
-
         inventoryPage.addProductInCart("Sauce Labs Bolt T-Shirt");
         inventoryPage.addProductInCart("Sauce Labs Onesie");
         inventoryPage.addProductInCart("Sauce Labs Fleece Jacket");
@@ -39,9 +36,6 @@ public class AddProductsToCartTest extends BaseTest {
 
     @Test(priority = 30)
     public void addedProductIsInCart() {
-        loginUserWithCredentials("standard_user", "secret_sauce");
-        resetAppState();
-
         inventoryPage.addProductInCart("Sauce Labs Bolt T-Shirt");
         navbarPage.clickOnShoppingCart();
         WebElement product = cartPage.products.getFirst();
@@ -53,9 +47,6 @@ public class AddProductsToCartTest extends BaseTest {
 
     @Test(priority = 40)
     public void addedProductsAreInCart() {
-        loginUserWithCredentials("standard_user", "secret_sauce");
-        resetAppState();
-
         inventoryPage.addProductInCart("Sauce Labs Bolt T-Shirt");
         inventoryPage.addProductInCart("Sauce Labs Onesie");
         inventoryPage.addProductInCart("Sauce Labs Fleece Jacket");
