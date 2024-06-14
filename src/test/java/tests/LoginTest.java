@@ -19,4 +19,44 @@ public class LoginTest extends BaseTest {
 
         Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/inventory.html");
     }
+
+    @Test
+    public void userCannotLogInInvalidUsername() {
+        loginUserWithCredentials("invalid_username", "secret_sauce");
+
+        Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/");
+        Assert.assertEquals(loginPage.getErrorText(), "Epic sadface: Username and password do not match any user in this service");
+    }
+
+    @Test
+    public void userCannotLogInInvalidPassword() {
+        loginUserWithCredentials("standard_user", "invalid_password");
+
+        Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/");
+        Assert.assertEquals(loginPage.getErrorText(), "Epic sadface: Username and password do not match any user in this service");
+    }
+
+    @Test
+    public void userCannotLogInEmptyUsernameField() {
+        loginUserWithCredentials("", "secret_sauce");
+
+        Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/");
+        Assert.assertEquals(loginPage.getErrorText(), "Epic sadface: Username is required");
+    }
+
+    @Test
+    public void userCannotLogInEmptyPasswordField() {
+        loginUserWithCredentials("standard_user", "");
+
+        Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/");
+        Assert.assertEquals(loginPage.getErrorText(), "Epic sadface: Password is required");
+    }
+
+    @Test
+    public void userCannotLogInEmptyFields() {
+        loginUserWithCredentials("", "");
+
+        Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/");
+        Assert.assertEquals(loginPage.getErrorText(), "Epic sadface: Username is required");
+    }
 }

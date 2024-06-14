@@ -29,6 +29,10 @@ public class LoginPage extends BaseTest {
 
     //-------------------------------------------------------------------------
 
+    public String getErrorText() {
+        return error.getText();
+    }
+
     public void insertUsername(String username) {
         usernameInput.clear();
         usernameInput.sendKeys(username);

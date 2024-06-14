@@ -1,6 +1,8 @@
 package base;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -25,8 +27,14 @@ public class BaseTest {
 
     // Helper methods
     public void loginUserWithCredentials(String username, String password) {
-        loginPage.insertUsername("standard_user");
-        loginPage.insertPassword("secret_sauce");
+        loginPage.insertUsername(username);
+        loginPage.insertPassword(password);
         loginPage.clickOnLoginButton();
     }
+
+    public void scrollIntoElementView(WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", element);
+    }
+
 }
