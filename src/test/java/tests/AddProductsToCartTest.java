@@ -6,7 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class AddingProductsInCartTest extends BaseTest {
+public class AddProductsToCartTest extends BaseTest {
 
     @BeforeMethod
     public void pageSetUp() {
