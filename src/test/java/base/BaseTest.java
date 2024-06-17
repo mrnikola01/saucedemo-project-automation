@@ -8,10 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import pages.CartPage;
-import pages.InventoryPage;
-import pages.LoginPage;
-import pages.NavbarPage;
+import pages.*;
 
 import java.time.Duration;
 import java.util.List;
@@ -24,6 +21,7 @@ public class BaseTest {
     public NavbarPage navbarPage;
     public InventoryPage inventoryPage;
     public CartPage cartPage;
+    public FooterPage footerPage;
 
     @BeforeClass
     public void setUp() {
@@ -34,12 +32,15 @@ public class BaseTest {
         navbarPage = new NavbarPage();
         inventoryPage = new InventoryPage();
         cartPage = new CartPage();
+        footerPage = new FooterPage();
     }
 
     @AfterClass
     public void tearDown() {
 //        driver.quit();
     }
+
+    //-------------------------------------------------------------------------
 
     // Helper methods
     public void loginUserWithCredentials(String username, String password) {
@@ -76,5 +77,16 @@ public class BaseTest {
         }
 
         return elementIsDisplayed;
+    }
+
+    public void switchToNewWindow() {
+        String mainWindow = driver.getWindowHandle();
+
+        for (String window : driver.getWindowHandles()) {
+            if (!window.equals(mainWindow)) {
+                driver.switchTo().window(window);
+                break;
+            }
+        }
     }
 }

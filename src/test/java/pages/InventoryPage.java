@@ -116,9 +116,13 @@ public class InventoryPage extends BaseTest {
         product.findElement(By.className("btn_inventory")).click();
     }
 
+    public String getProductButtonText(WebElement product) {
+        return product.findElement(By.className("btn_inventory")).getText();
+    }
+
     public void addProductInCart(String productName) {
         for(WebElement product : products) {
-            if(getProductName(product).equals(productName)) {
+            if(getProductName(product).equals(productName) && getProductButtonText(product).equals("Add to cart")) {
                 clickOnProductButton(product);
                 break;
             }
@@ -127,7 +131,7 @@ public class InventoryPage extends BaseTest {
 
     public void removeProductFromCart(String productName) {
         for(WebElement product : products) {
-            if(getProductName(product).equals(productName)) {
+            if(getProductName(product).equals(productName) && getProductButtonText(product).equals("Remove")) {
                 clickOnProductButton(product);
                 break;
             }

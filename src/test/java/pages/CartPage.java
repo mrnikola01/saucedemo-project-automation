@@ -17,6 +17,9 @@ public class CartPage extends BaseTest {
     @FindBy(css = ".cart_list .cart_item")
     public List<WebElement> products;
 
+    @FindBy(id = "checkout")
+    public WebElement checkoutButton;
+
     //-------------------------------------------------------------------------
 
     public String getProductName(WebElement product) {
@@ -25,5 +28,9 @@ public class CartPage extends BaseTest {
 
     public String getProductPrice(WebElement product) {
         return product.findElement(By.className("inventory_item_price")).getText();
+    }
+
+    public void clickOnCheckoutButton() {
+        checkoutButton.click();
     }
 }
