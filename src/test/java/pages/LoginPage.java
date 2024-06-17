@@ -42,8 +42,4 @@ public class LoginPage extends BaseTest {
     public void clickOnLoginButton() {
         loginButton.click();
     }
-
-    public boolean isLoginButtonDisplayed() {
-        return loginButton.isDisplayed();
-    }
 }

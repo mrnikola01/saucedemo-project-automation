@@ -20,7 +20,7 @@ public class LoginTest extends BaseTest {
 
         Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/inventory.html");
         Assert.assertEquals(navbarPage.getTitleText(), "Products");
-        Assert.assertTrue(navbarPage.isShoppingCartDisplayed());
+        Assert.assertTrue(isElementDisplayed(navbarPage.shoppingCart));
     }
 
     @Test

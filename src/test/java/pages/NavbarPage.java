@@ -49,10 +49,6 @@ public class NavbarPage extends BaseTest {
         shoppingCart.click();
     }
 
-    public boolean isShoppingCartDisplayed() {
-        return shoppingCart.isDisplayed();
-    }
-
     public String getTitleText() {
         return title.getText();
     }

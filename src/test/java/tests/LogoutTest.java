@@ -21,6 +21,6 @@ public class LogoutTest extends BaseTest {
         navbarPage.clickOnHamburgerMenuItem("Logout");
 
         Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/");
-        Assert.assertTrue(loginPage.isLoginButtonDisplayed());
+        Assert.assertTrue(isElementDisplayed(loginPage.loginButton));
     }
 }
