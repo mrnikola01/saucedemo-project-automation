@@ -114,6 +114,7 @@ public class InventoryPage extends BaseTest {
         return product.findElement(By.className("inventory_item_price")).getText();
     }
 
+    // Product name and price of clicked product
     public String getClickedProductName() {
         return clickedProductName;
     }

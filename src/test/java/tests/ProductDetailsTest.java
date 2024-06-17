@@ -16,6 +16,15 @@ public class ProductDetailsTest extends BaseTest {
     }
 
     @Test
+    public void userCanClickOnProduct() {
+        inventoryPage.clickOnProduct("Sauce Labs Fleece Jacket");
+
+        Assert.assertTrue(driver.getCurrentUrl().contains("https://www.saucedemo.com/inventory-item.html?id="));
+        Assert.assertTrue(isElementDisplayed(productPage.name));
+        Assert.assertTrue(isElementDisplayed(productPage.description));
+    }
+
+    @Test
     public void productDetailsAreCorrect() {
         inventoryPage.clickOnProduct("Sauce Labs Fleece Jacket");
 

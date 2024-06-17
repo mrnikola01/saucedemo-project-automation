@@ -46,7 +46,7 @@ public class BaseTest {
 
     @AfterClass
     public void tearDown() {
-//        driver.quit();
+        driver.quit();
     }
 
     //-------------------------------------------------------------------------
@@ -96,6 +96,7 @@ public class BaseTest {
     }
 
     public void switchToNewWindow() {
+
         // Closing all windows except the main one
         closeAllWindows();
 
