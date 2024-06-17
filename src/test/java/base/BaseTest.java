@@ -22,6 +22,9 @@ public class BaseTest {
     public InventoryPage inventoryPage;
     public CartPage cartPage;
     public FooterPage footerPage;
+    public CheckoutStepOnePage checkoutStepOnePage;
+    public CheckoutStepTwoPage checkoutStepTwoPage;
+    public CheckoutCompletePage checkoutCompletePage;
 
     @BeforeClass
     public void setUp() {
@@ -33,6 +36,9 @@ public class BaseTest {
         inventoryPage = new InventoryPage();
         cartPage = new CartPage();
         footerPage = new FooterPage();
+        checkoutStepOnePage = new CheckoutStepOnePage();
+        checkoutStepTwoPage = new CheckoutStepTwoPage();
+        checkoutCompletePage = new CheckoutCompletePage();
     }
 
     @AfterClass
@@ -47,6 +53,13 @@ public class BaseTest {
         loginPage.insertUsername(username);
         loginPage.insertPassword(password);
         loginPage.clickOnLoginButton();
+    }
+
+    public void fillCheckoutForm(String firstName, String lastName, String postalCode) {
+        checkoutStepOnePage.insertFirstName(firstName);
+        checkoutStepOnePage.insertLastName(lastName);
+        checkoutStepOnePage.insertPostalCode(postalCode);
+        checkoutStepOnePage.clickOnContinueButton();
     }
 
     public void resetAppState() {

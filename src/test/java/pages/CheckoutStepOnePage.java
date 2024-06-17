@@ -26,6 +26,9 @@ public class CheckoutStepOnePage extends BaseTest {
     @FindBy(id = "continue")
     public WebElement continueButton;
 
+    @FindBy(className = "error-message-container")
+    public WebElement error;
+
     //-------------------------------------------------------------------------
 
     public void insertFirstName(String firstName) {
@@ -49,5 +52,9 @@ public class CheckoutStepOnePage extends BaseTest {
 
     public void clickOnContinueButton() {
         continueButton.click();
+    }
+
+    public String getErrorText() {
+        return error.getText();
     }
 }
