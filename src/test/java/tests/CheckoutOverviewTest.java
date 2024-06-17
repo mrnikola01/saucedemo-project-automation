@@ -25,6 +25,12 @@ public class CheckoutOverviewTest extends BaseTest {
     }
 
     @Test
+    public void userIsOnCheckoutStepTwoPage() {
+        Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/checkout-step-two.html");
+        Assert.assertEquals(navbarPage.getTitleText(), "Checkout: Overview");
+    }
+
+    @Test
     public void itemTotalPriceIsCorrect() {
         List<String> productsPrices = cartPage.getALlProductsPrices();
 

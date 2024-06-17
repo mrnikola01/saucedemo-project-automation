@@ -5,7 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class CheckoutTest extends BaseTest {
+public class CheckoutFormTest extends BaseTest {
 
     @BeforeMethod
     public void pageSetUp() {
@@ -17,6 +17,17 @@ public class CheckoutTest extends BaseTest {
     }
 
     @Test
+    public void userIsOnCheckoutStepOnePage() {
+        inventoryPage.addProductInCart("Sauce Labs Bolt T-Shirt");
+        inventoryPage.addProductInCart("Sauce Labs Onesie");
+        navbarPage.clickOnShoppingCart();
+        cartPage.clickOnCheckoutButton();
+
+        Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/checkout-step-one.html");
+        Assert.assertEquals(navbarPage.getTitleText(), "Checkout: Your Information");
+    }
+
+    @Test
     public void userCanFillCheckoutForm() {
         inventoryPage.addProductInCart("Sauce Labs Bolt T-Shirt");
         inventoryPage.addProductInCart("Sauce Labs Onesie");
@@ -24,7 +35,6 @@ public class CheckoutTest extends BaseTest {
         cartPage.clickOnCheckoutButton();
         fillCheckoutForm("Petar", "Petrovic", "11000");
 
-        Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/checkout-step-two.html");
         Assert.assertTrue(checkoutStepTwoPage.itemTotalPrice.isDisplayed());
         Assert.assertTrue(checkoutStepTwoPage.tax.isDisplayed());
     }
