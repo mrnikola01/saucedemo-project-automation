@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InventoryPage extends BaseTest {
+    public String clickedProductName;
+    public String clickedProductPrice;
 
     public InventoryPage() {
         PageFactory.initElements(driver, this);
@@ -112,12 +114,36 @@ public class InventoryPage extends BaseTest {
         return product.findElement(By.className("inventory_item_price")).getText();
     }
 
+    public String getClickedProductName() {
+        return clickedProductName;
+    }
+
+    public String getClickedProductPrice() {
+        return clickedProductPrice;
+    }
+
+    public void clickOnProductName(WebElement product) {
+        clickedProductName = getProductName(product);
+        clickedProductPrice = getProductPrice(product);
+
+        product.findElement(By.className("inventory_item_name")).click();
+    }
+
     public void clickOnProductButton(WebElement product) {
         product.findElement(By.className("btn_inventory")).click();
     }
 
     public String getProductButtonText(WebElement product) {
         return product.findElement(By.className("btn_inventory")).getText();
+    }
+
+    public void clickOnProduct(String productName) {
+        for(WebElement product : products) {
+            if(getProductName(product).equals(productName)) {
+                clickOnProductName(product);
+                break;
+            }
+        }
     }
 
     public void addProductInCart(String productName) {

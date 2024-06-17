@@ -26,6 +26,7 @@ public class BaseTest {
     public CheckoutStepOnePage checkoutStepOnePage;
     public CheckoutStepTwoPage checkoutStepTwoPage;
     public CheckoutCompletePage checkoutCompletePage;
+    public ProductPage productPage;
 
     @BeforeClass
     public void setUp() {
@@ -40,11 +41,12 @@ public class BaseTest {
         checkoutStepOnePage = new CheckoutStepOnePage();
         checkoutStepTwoPage = new CheckoutStepTwoPage();
         checkoutCompletePage = new CheckoutCompletePage();
+        productPage = new ProductPage();
     }
 
     @AfterClass
     public void tearDown() {
-        driver.quit();
+//        driver.quit();
     }
 
     //-------------------------------------------------------------------------
@@ -94,7 +96,7 @@ public class BaseTest {
     }
 
     public void switchToNewWindow() {
-        // Close all windows except the main one
+        // Closing all windows except the main one
         closeAllWindows();
 
         for (String window : driver.getWindowHandles()) {
