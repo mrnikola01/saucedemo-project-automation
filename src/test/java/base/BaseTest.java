@@ -16,6 +16,7 @@ import java.util.List;
 public class BaseTest {
     public static WebDriver driver;
     public static WebDriverWait wait;
+    public String mainWindow;
 
     public LoginPage loginPage;
     public NavbarPage navbarPage;
@@ -43,7 +44,7 @@ public class BaseTest {
 
     @AfterClass
     public void tearDown() {
-//        driver.quit();
+        driver.quit();
     }
 
     //-------------------------------------------------------------------------
@@ -93,13 +94,24 @@ public class BaseTest {
     }
 
     public void switchToNewWindow() {
-        String mainWindow = driver.getWindowHandle();
+        // Close all windows except the main one
+        closeAllWindows();
 
         for (String window : driver.getWindowHandles()) {
             if (!window.equals(mainWindow)) {
                 driver.switchTo().window(window);
                 break;
             }
+        }
+    }
+
+    public void closeAllWindows() {
+        for (String window : driver.getWindowHandles()) {
+            if (!window.equals(mainWindow)) {
+                driver.switchTo().window(window);
+                driver.close();
+            }
+            break;
         }
     }
 }

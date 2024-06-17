@@ -11,6 +11,7 @@ public class FooterTest extends BaseTest {
     public void pageSetUp() {
         driver.manage().window().maximize();
         driver.get("https://www.saucedemo.com/");
+        mainWindow = driver.getWindowHandle();
 
         loginUserWithCredentials("standard_user", "secret_sauce");
     }
