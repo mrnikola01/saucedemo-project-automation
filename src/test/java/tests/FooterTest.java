@@ -13,7 +13,7 @@ public class FooterTest extends BaseTest {
         driver.get("https://www.saucedemo.com/");
         mainWindow = driver.getWindowHandle();
 
-        loginUserWithCredentials("standard_user", "secret_sauce");
+        loginUserWithCredentials(loginPage.validUsername, loginPage.validPassword);
     }
 
     @Test

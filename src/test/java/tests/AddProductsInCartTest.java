@@ -6,14 +6,14 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class AddProductsToCartTest extends BaseTest {
+public class AddProductsInCartTest extends BaseTest {
 
     @BeforeMethod
     public void pageSetUp() {
         driver.manage().window().maximize();
         driver.get("https://www.saucedemo.com/");
 
-        loginUserWithCredentials("standard_user", "secret_sauce");
+        loginUserWithCredentials(loginPage.validUsername, loginPage.validPassword);
         resetAppState();
     }
 

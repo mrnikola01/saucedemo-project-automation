@@ -15,7 +15,7 @@ public class LogoutTest extends BaseTest {
 
     @Test
     public void userCanLogOut() {
-        loginUserWithCredentials("standard_user", "secret_sauce");
+        loginUserWithCredentials(loginPage.validUsername, loginPage.validPassword);
 
         navbarPage.clickOnHamburgerMenu();
         navbarPage.clickOnHamburgerMenuItem("Logout");

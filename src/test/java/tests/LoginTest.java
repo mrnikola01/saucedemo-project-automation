@@ -15,7 +15,7 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void userCanLogIn() {
-        loginUserWithCredentials("standard_user", "secret_sauce");
+        loginUserWithCredentials(loginPage.validUsername, loginPage.validPassword);
 
         Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/inventory.html");
         Assert.assertEquals(navbarPage.getTitleText(), "Products");
@@ -24,7 +24,7 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void userCannotLogInInvalidUsername() {
-        loginUserWithCredentials("invalid_username", "secret_sauce");
+        loginUserWithCredentials(loginPage.invalidUsername, loginPage.validPassword);
 
         Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/");
         Assert.assertEquals(loginPage.getErrorText(), "Epic sadface: Username and password do not match any user in this service");
@@ -32,7 +32,7 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void userCannotLogInInvalidPassword() {
-        loginUserWithCredentials("standard_user", "invalid_password");
+        loginUserWithCredentials(loginPage.validUsername, loginPage.invalidPassword);
 
         Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/");
         Assert.assertEquals(loginPage.getErrorText(), "Epic sadface: Username and password do not match any user in this service");
@@ -40,7 +40,7 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void userCannotLogInEmptyUsernameField() {
-        loginUserWithCredentials("", "secret_sauce");
+        loginUserWithCredentials("", loginPage.validPassword);
 
         Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/");
         Assert.assertEquals(loginPage.getErrorText(), "Epic sadface: Username is required");
@@ -48,7 +48,7 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void userCannotLogInEmptyPasswordField() {
-        loginUserWithCredentials("standard_user", "");
+        loginUserWithCredentials(loginPage.validUsername, "");
 
         Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/");
         Assert.assertEquals(loginPage.getErrorText(), "Epic sadface: Password is required");

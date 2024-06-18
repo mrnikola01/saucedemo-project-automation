@@ -12,7 +12,7 @@ public class ProductDetailsTest extends BaseTest {
         driver.manage().window().maximize();
         driver.get("https://www.saucedemo.com/");
 
-        loginUserWithCredentials("standard_user", "secret_sauce");
+        loginUserWithCredentials(loginPage.validUsername, loginPage.validPassword);
     }
 
     @Test
@@ -30,5 +30,6 @@ public class ProductDetailsTest extends BaseTest {
 
         Assert.assertEquals(productPage.getProductName(), inventoryPage.getClickedProductName());
         Assert.assertEquals(productPage.getProductPrice(), inventoryPage.getClickedProductPrice());
+        Assert.assertTrue(isElementDisplayed(productPage.description));
     }
 }

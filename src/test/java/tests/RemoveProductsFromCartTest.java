@@ -15,7 +15,7 @@ public class RemoveProductsFromCartTest extends BaseTest {
 
     @Test
     public void userCanRemoveProductFromCart() {
-        loginUserWithCredentials("standard_user", "secret_sauce");
+        loginUserWithCredentials(loginPage.validUsername, loginPage.validPassword);
         resetAppState();
 
         inventoryPage.addProductInCart("Sauce Labs Bolt T-Shirt");

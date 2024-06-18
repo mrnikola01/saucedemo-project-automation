@@ -6,6 +6,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage extends BaseTest {
+    public String validUsername = "standard_user";
+    public String validPassword = "secret_sauce";
+    public String invalidUsername = "invalid_username";
+    public String invalidPassword = "invalid_password";
 
     public LoginPage() {
         PageFactory.initElements(driver, this);

@@ -12,7 +12,7 @@ public class CompletePurchaseTest extends BaseTest {
         driver.manage().window().maximize();
         driver.get("https://www.saucedemo.com/");
 
-        loginUserWithCredentials("standard_user", "secret_sauce");
+        loginUserWithCredentials(loginPage.validUsername, loginPage.validPassword);
         resetAppState();
     }
 
