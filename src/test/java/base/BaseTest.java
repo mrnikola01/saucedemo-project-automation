@@ -17,6 +17,13 @@ public class BaseTest {
     public static WebDriver driver;
     public static WebDriverWait wait;
     public String mainWindow;
+    public String loginPageURL = "https://www.saucedemo.com/";
+    public String checkoutStepTwoPageURL = "https://www.saucedemo.com/checkout-step-two.html";
+    public String checkoutStepOnePageURL = "https://www.saucedemo.com/checkout-step-one.html";
+    public String checkoutCompletePageURL = "https://www.saucedemo.com/checkout-complete.html";
+    public String xPageURL = "https://x.com/saucelabs";
+    public String facebookPageURL = "https://www.facebook.com/saucelabs";
+    public String linkedinPageURL = "https://www.linkedin.com/company/sauce-labs/";
 
     public LoginPage loginPage;
     public NavbarPage navbarPage;
@@ -80,6 +87,7 @@ public class BaseTest {
 
     public void waitForAllElementsVisibility(List<WebElement> elements) {
         wait.until(ExpectedConditions.visibilityOfAllElements(elements));
+
     }
 
     public void waitForElementVisibility(WebElement element) {

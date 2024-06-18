@@ -10,7 +10,7 @@ public class CheckoutFormTest extends BaseTest {
     @BeforeMethod
     public void pageSetUp() {
         driver.manage().window().maximize();
-        driver.get("https://www.saucedemo.com/");
+        driver.get(loginPageURL);
 
         loginUserWithCredentials(loginPage.validUsername, loginPage.validPassword);
         resetAppState();
@@ -23,7 +23,7 @@ public class CheckoutFormTest extends BaseTest {
         navbarPage.clickOnShoppingCart();
         cartPage.clickOnCheckoutButton();
 
-        Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/checkout-step-one.html");
+        Assert.assertEquals(driver.getCurrentUrl(), checkoutStepOnePageURL);
         Assert.assertEquals(navbarPage.getTitleText(), "Checkout: Your Information");
     }
 

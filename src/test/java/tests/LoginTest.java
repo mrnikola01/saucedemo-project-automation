@@ -10,7 +10,7 @@ public class LoginTest extends BaseTest {
     @BeforeMethod
     public void pageSetUp() {
         driver.manage().window().maximize();
-        driver.get("https://www.saucedemo.com/");
+        driver.get(loginPageURL);
     }
 
     @Test

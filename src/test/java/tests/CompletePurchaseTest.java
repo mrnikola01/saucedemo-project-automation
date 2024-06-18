@@ -10,7 +10,7 @@ public class CompletePurchaseTest extends BaseTest {
     @BeforeMethod
     public void pageSetUp() {
         driver.manage().window().maximize();
-        driver.get("https://www.saucedemo.com/");
+        driver.get(loginPageURL);
 
         loginUserWithCredentials(loginPage.validUsername, loginPage.validPassword);
         resetAppState();
@@ -25,7 +25,7 @@ public class CompletePurchaseTest extends BaseTest {
         fillCheckoutForm(checkoutStepOnePage.validFirstName, checkoutStepOnePage.validLastName, checkoutStepOnePage.validPostalCode);
         checkoutStepTwoPage.clickOnFinishButton();
 
-        Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/checkout-complete.html");
+        Assert.assertEquals(driver.getCurrentUrl(), checkoutCompletePageURL);
         Assert.assertEquals(navbarPage.getTitleText(), "Checkout: Complete!");
         Assert.assertEquals(checkoutCompletePage.getCompleteHeaderText(), "Thank you for your order!");
         Assert.assertTrue(isElementDisplayed(checkoutCompletePage.completeHeader));

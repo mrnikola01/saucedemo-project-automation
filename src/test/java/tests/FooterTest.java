@@ -10,7 +10,7 @@ public class FooterTest extends BaseTest {
     @BeforeMethod
     public void pageSetUp() {
         driver.manage().window().maximize();
-        driver.get("https://www.saucedemo.com/");
+        driver.get(loginPageURL);
         mainWindow = driver.getWindowHandle();
 
         loginUserWithCredentials(loginPage.validUsername, loginPage.validPassword);
@@ -21,7 +21,7 @@ public class FooterTest extends BaseTest {
         footerPage.clickOnXIcon();
         switchToNewWindow();
 
-        Assert.assertEquals(driver.getCurrentUrl(), "https://x.com/saucelabs");
+        Assert.assertEquals(driver.getCurrentUrl(), xPageURL);
     }
 
     @Test
@@ -29,7 +29,7 @@ public class FooterTest extends BaseTest {
         footerPage.clickOnFacebookIcon();
         switchToNewWindow();
 
-        Assert.assertEquals(driver.getCurrentUrl(), "https://www.facebook.com/saucelabs");
+        Assert.assertEquals(driver.getCurrentUrl(), facebookPageURL);
     }
 
     @Test
@@ -37,6 +37,6 @@ public class FooterTest extends BaseTest {
         footerPage.clickOnLinkedinIcon();
         switchToNewWindow();
 
-        Assert.assertEquals(driver.getCurrentUrl(), "https://www.linkedin.com/company/sauce-labs/");
+        Assert.assertEquals(driver.getCurrentUrl(), linkedinPageURL);
     }
 }
