@@ -34,7 +34,7 @@ public class CheckoutOverviewTest extends BaseTest {
     public void itemTotalPriceIsCorrect() {
         List<String> productsPrices = cartPage.getALlProductsPrices();
 
-        Assert.assertEquals(cartPage.sumAllProductPrices(productsPrices), 23.98);
+        Assert.assertEquals(checkoutStepTwoPage.getItemTotalPrice(), cartPage.sumAllProductPrices(productsPrices));
     }
 
     @Test
@@ -42,7 +42,7 @@ public class CheckoutOverviewTest extends BaseTest {
         List<String> productsPrices = cartPage.getALlProductsPrices();
         double priceOfProducts = cartPage.sumAllProductPrices(productsPrices);
 
-        Assert.assertEquals(cartPage.calculateTax(priceOfProducts), 1.92);
+        Assert.assertEquals(checkoutStepTwoPage.getTax(), cartPage.calculateTax(priceOfProducts));
     }
 
     @Test
@@ -51,6 +51,6 @@ public class CheckoutOverviewTest extends BaseTest {
         double priceOfProducts = cartPage.sumAllProductPrices(productsPrices);
         double tax = cartPage.calculateTax(priceOfProducts);
 
-        Assert.assertEquals((priceOfProducts + tax), 25.90);
+        Assert.assertEquals(checkoutStepTwoPage.getTotalPrice(), (priceOfProducts + tax));
     }
 }

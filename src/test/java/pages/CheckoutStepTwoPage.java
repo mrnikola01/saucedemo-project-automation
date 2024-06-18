@@ -28,16 +28,16 @@ public class CheckoutStepTwoPage extends BaseTest {
 
     //-------------------------------------------------------------------------
 
-    public String getItemTotalPriceText() {
-        return itemTotalPrice.getText();
+    public double getItemTotalPrice() {
+        return Double.parseDouble(itemTotalPrice.getText().replace("Item total: $", ""));
     }
 
-    public String getTaxText() {
-        return tax.getText();
+    public double getTax() {
+        return Double.parseDouble(tax.getText().replace("Tax: $", ""));
     }
 
-    public String getTotalPriceText() {
-        return totalPrice.getText();
+    public double getTotalPrice() {
+        return Double.parseDouble(totalPrice.getText().replace("Total: $", ""));
     }
 
     public void clickOnCancelButton() {
