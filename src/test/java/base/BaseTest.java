@@ -69,6 +69,8 @@ public class BaseTest {
         navbarPage.clickOnHamburgerMenu();
         navbarPage.clickOnHamburgerMenuItem("Reset App State");
         driver.navigate().refresh();
+
+        inventoryPage.numberOfProductsInCart = 0;
     }
 
     public void scrollIntoElementView(WebElement element) {

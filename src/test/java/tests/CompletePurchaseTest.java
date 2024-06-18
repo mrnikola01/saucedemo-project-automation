@@ -22,7 +22,7 @@ public class CompletePurchaseTest extends BaseTest {
         inventoryPage.addProductInCart("Sauce Labs Onesie");
         navbarPage.clickOnShoppingCart();
         cartPage.clickOnCheckoutButton();
-        fillCheckoutForm("Petar", "Petrovic", "11000");
+        fillCheckoutForm(checkoutStepOnePage.validFirstName, checkoutStepOnePage.validLastName, checkoutStepOnePage.validPostalCode);
         checkoutStepTwoPage.clickOnFinishButton();
 
         Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/checkout-complete.html");

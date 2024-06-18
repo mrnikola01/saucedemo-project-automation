@@ -6,6 +6,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class CheckoutStepOnePage extends BaseTest {
+    public String validFirstName = "Petar";
+    public String validLastName = "Petrovic";
+    public String validPostalCode = "11000";
 
     public CheckoutStepOnePage() {
         PageFactory.initElements(driver, this);

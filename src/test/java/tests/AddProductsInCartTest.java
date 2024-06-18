@@ -21,7 +21,7 @@ public class AddProductsInCartTest extends BaseTest {
     public void userCanAddProductInCart() {
         inventoryPage.addProductInCart("Sauce Labs Bolt T-Shirt");
 
-        Assert.assertEquals(navbarPage.getShoppingCartBadgeText(), "1");
+        Assert.assertEquals(navbarPage.getShoppingCartBadgeText(), Integer.toString(inventoryPage.numberOfProductsInCart));
     }
 
     @Test(priority = 20)
@@ -30,8 +30,7 @@ public class AddProductsInCartTest extends BaseTest {
         inventoryPage.addProductInCart("Sauce Labs Onesie");
         inventoryPage.addProductInCart("Sauce Labs Fleece Jacket");
 
-        Assert.assertEquals(navbarPage.getShoppingCartBadgeText(), "3");
-
+        Assert.assertEquals(navbarPage.getShoppingCartBadgeText(), Integer.toString(inventoryPage.numberOfProductsInCart));
     }
 
     @Test(priority = 30)

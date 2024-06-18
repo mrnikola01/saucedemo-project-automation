@@ -33,7 +33,7 @@ public class CheckoutFormTest extends BaseTest {
         inventoryPage.addProductInCart("Sauce Labs Onesie");
         navbarPage.clickOnShoppingCart();
         cartPage.clickOnCheckoutButton();
-        fillCheckoutForm("Petar", "Petrovic", "11000");
+        fillCheckoutForm(checkoutStepOnePage.validFirstName, checkoutStepOnePage.validLastName, checkoutStepOnePage.validPostalCode);
 
         Assert.assertTrue(checkoutStepTwoPage.itemTotalPrice.isDisplayed());
         Assert.assertTrue(checkoutStepTwoPage.tax.isDisplayed());
@@ -45,7 +45,7 @@ public class CheckoutFormTest extends BaseTest {
         inventoryPage.addProductInCart("Sauce Labs Onesie");
         navbarPage.clickOnShoppingCart();
         cartPage.clickOnCheckoutButton();
-        fillCheckoutForm("", "Petrovic", "11000");
+        fillCheckoutForm("", checkoutStepOnePage.validLastName, checkoutStepOnePage.validPostalCode);
 
         Assert.assertTrue(isElementDisplayed(checkoutStepOnePage.error));
         Assert.assertEquals(checkoutStepOnePage.getErrorText(), "Error: First Name is required");
@@ -57,7 +57,7 @@ public class CheckoutFormTest extends BaseTest {
         inventoryPage.addProductInCart("Sauce Labs Onesie");
         navbarPage.clickOnShoppingCart();
         cartPage.clickOnCheckoutButton();
-        fillCheckoutForm("Petar", "", "11000");
+        fillCheckoutForm(checkoutStepOnePage.validFirstName, "", checkoutStepOnePage.validPostalCode);
 
         Assert.assertTrue(isElementDisplayed(checkoutStepOnePage.error));
         Assert.assertEquals(checkoutStepOnePage.getErrorText(), "Error: Last Name is required");
@@ -69,7 +69,7 @@ public class CheckoutFormTest extends BaseTest {
         inventoryPage.addProductInCart("Sauce Labs Onesie");
         navbarPage.clickOnShoppingCart();
         cartPage.clickOnCheckoutButton();
-        fillCheckoutForm("Petar", "Petrovic", "");
+        fillCheckoutForm(checkoutStepOnePage.validFirstName, checkoutStepOnePage.validLastName, "");
 
         Assert.assertTrue(isElementDisplayed(checkoutStepOnePage.error));
         Assert.assertEquals(checkoutStepOnePage.getErrorText(), "Error: Postal Code is required");

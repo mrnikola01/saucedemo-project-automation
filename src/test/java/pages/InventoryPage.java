@@ -13,6 +13,7 @@ import java.util.List;
 public class InventoryPage extends BaseTest {
     public String clickedProductName;
     public String clickedProductPrice;
+    public int numberOfProductsInCart = 0;
 
     public InventoryPage() {
         PageFactory.initElements(driver, this);
@@ -151,6 +152,7 @@ public class InventoryPage extends BaseTest {
         for(WebElement product : products) {
             if(getProductName(product).equals(productName) && getProductButtonText(product).equals("Add to cart")) {
                 clickOnProductButton(product);
+                numberOfProductsInCart++;
                 break;
             }
         }
@@ -160,6 +162,7 @@ public class InventoryPage extends BaseTest {
         for(WebElement product : products) {
             if(getProductName(product).equals(productName) && getProductButtonText(product).equals("Remove")) {
                 clickOnProductButton(product);
+                numberOfProductsInCart--;
                 break;
             }
         }

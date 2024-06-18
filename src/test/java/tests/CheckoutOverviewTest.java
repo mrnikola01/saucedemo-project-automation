@@ -21,7 +21,7 @@ public class CheckoutOverviewTest extends BaseTest {
         inventoryPage.addProductInCart("Sauce Labs Onesie");
         navbarPage.clickOnShoppingCart();
         cartPage.clickOnCheckoutButton();
-        fillCheckoutForm("Petar", "Petrovic", "11000");
+        fillCheckoutForm(checkoutStepOnePage.validFirstName, checkoutStepOnePage.validLastName, checkoutStepOnePage.validPostalCode);
     }
 
     @Test
