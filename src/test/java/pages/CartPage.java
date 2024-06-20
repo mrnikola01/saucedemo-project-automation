@@ -47,6 +47,7 @@ public class CartPage extends BaseTest {
         return sum;
     }
 
+    // Calculating the tax - > product price * 0.08 (rounded to 2 decimals)
     public double calculateTax(double price) {
         return (double) Math.round((price * 0.08) * 100) / 100;
     }

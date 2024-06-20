@@ -17,6 +17,8 @@ public class BaseTest {
     public static WebDriver driver;
     public static WebDriverWait wait;
     public String mainWindow;
+
+    // URLs
     public String loginPageURL = "https://www.saucedemo.com/";
     public String checkoutStepTwoPageURL = "https://www.saucedemo.com/checkout-step-two.html";
     public String checkoutStepOnePageURL = "https://www.saucedemo.com/checkout-step-one.html";
@@ -25,6 +27,7 @@ public class BaseTest {
     public String facebookPageURL = "https://www.facebook.com/saucelabs";
     public String linkedinPageURL = "https://www.linkedin.com/company/sauce-labs/";
 
+    // Pages
     public LoginPage loginPage;
     public NavbarPage navbarPage;
     public InventoryPage inventoryPage;
@@ -69,6 +72,7 @@ public class BaseTest {
         checkoutStepOnePage.insertFirstName(firstName);
         checkoutStepOnePage.insertLastName(lastName);
         checkoutStepOnePage.insertPostalCode(postalCode);
+        System.out.println(checkoutStepOnePage.firstNameInput.getText());
         checkoutStepOnePage.clickOnContinueButton();
     }
 
@@ -96,6 +100,7 @@ public class BaseTest {
 
     public boolean isElementDisplayed(WebElement element) {
         boolean elementIsDisplayed = false;
+
         try {
             elementIsDisplayed = element.isDisplayed();
         } catch(Exception ignored) {
@@ -107,8 +112,8 @@ public class BaseTest {
 
     public void switchToNewWindow() {
 
-        // Closing all windows except the main one
-        closeAllWindows();
+        // Closing all tabs except main, then switch to new tab
+        closeAllWindowsExceptMain();
 
         for (String window : driver.getWindowHandles()) {
             if (!window.equals(mainWindow)) {
@@ -118,7 +123,7 @@ public class BaseTest {
         }
     }
 
-    public void closeAllWindows() {
+    public void closeAllWindowsExceptMain() {
         for (String window : driver.getWindowHandles()) {
             if (!window.equals(mainWindow)) {
                 driver.switchTo().window(window);
