@@ -13,6 +13,7 @@ import java.util.List;
 public class InventoryPage extends BaseTest {
     public String clickedProductName;
     public String clickedProductPrice;
+
     public int numberOfProductsInCart = 0;
 
     public InventoryPage() {
@@ -115,7 +116,7 @@ public class InventoryPage extends BaseTest {
         return product.findElement(By.className("inventory_item_price")).getText();
     }
 
-    // Product name and price of clicked product
+    // Product name and price of the clicked product
     public String getClickedProductName() {
         return clickedProductName;
     }

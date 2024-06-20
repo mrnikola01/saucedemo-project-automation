@@ -16,6 +16,8 @@ import java.util.List;
 public class BaseTest {
     public static WebDriver driver;
     public static WebDriverWait wait;
+
+    // Main window
     public String mainWindow;
 
     // URLs
@@ -81,6 +83,7 @@ public class BaseTest {
         navbarPage.clickOnHamburgerMenuItem("Reset App State");
         driver.navigate().refresh();
 
+        // Resetting number of products in cart
         inventoryPage.numberOfProductsInCart = 0;
     }
 
