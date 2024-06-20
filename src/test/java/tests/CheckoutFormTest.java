@@ -16,7 +16,7 @@ public class CheckoutFormTest extends BaseTest {
         resetAppState();
     }
 
-    @Test
+    @Test(priority = 10)
     public void userIsOnCheckoutStepOnePage() {
         inventoryPage.addProductInCart("Sauce Labs Bolt T-Shirt");
         inventoryPage.addProductInCart("Sauce Labs Onesie");
@@ -27,7 +27,7 @@ public class CheckoutFormTest extends BaseTest {
         Assert.assertEquals(navbarPage.getTitleText(), "Checkout: Your Information");
     }
 
-    @Test
+    @Test(priority = 20)
     public void userCanFillCheckoutForm() {
         inventoryPage.addProductInCart("Sauce Labs Bolt T-Shirt");
         inventoryPage.addProductInCart("Sauce Labs Onesie");
@@ -39,7 +39,7 @@ public class CheckoutFormTest extends BaseTest {
         Assert.assertTrue(checkoutStepTwoPage.tax.isDisplayed());
     }
 
-    @Test
+    @Test(priority = 30)
     public void userCannotFillCheckoutFormEmptyFirstName() {
         inventoryPage.addProductInCart("Sauce Labs Bolt T-Shirt");
         inventoryPage.addProductInCart("Sauce Labs Onesie");
@@ -51,7 +51,7 @@ public class CheckoutFormTest extends BaseTest {
         Assert.assertEquals(checkoutStepOnePage.getErrorText(), "Error: First Name is required");
     }
 
-    @Test
+    @Test(priority = 40)
     public void userCannotFillCheckoutFormEmptyLastName() {
         inventoryPage.addProductInCart("Sauce Labs Bolt T-Shirt");
         inventoryPage.addProductInCart("Sauce Labs Onesie");
@@ -63,7 +63,7 @@ public class CheckoutFormTest extends BaseTest {
         Assert.assertEquals(checkoutStepOnePage.getErrorText(), "Error: Last Name is required");
     }
 
-    @Test
+    @Test(priority = 50)
     public void userCannotFillCheckoutFormEmptyPostalCode() {
         inventoryPage.addProductInCart("Sauce Labs Bolt T-Shirt");
         inventoryPage.addProductInCart("Sauce Labs Onesie");
@@ -75,13 +75,13 @@ public class CheckoutFormTest extends BaseTest {
         Assert.assertEquals(checkoutStepOnePage.getErrorText(), "Error: Postal Code is required");
     }
 
-    @Test
+    @Test(priority = 60)
     public void userCannotFillCheckoutFormEmptyFields() {
         inventoryPage.addProductInCart("Sauce Labs Bolt T-Shirt");
         inventoryPage.addProductInCart("Sauce Labs Onesie");
         navbarPage.clickOnShoppingCart();
         cartPage.clickOnCheckoutButton();
-        fillCheckoutForm("", "", "");
+        checkoutStepOnePage.clickOnContinueButton();
 
         Assert.assertTrue(isElementDisplayed(checkoutStepOnePage.error));
         Assert.assertEquals(checkoutStepOnePage.getErrorText(), "Error: First Name is required");

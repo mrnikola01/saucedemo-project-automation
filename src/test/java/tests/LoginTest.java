@@ -13,52 +13,52 @@ public class LoginTest extends BaseTest {
         driver.get(loginPageURL);
     }
 
-    @Test
+    @Test(priority = 10)
     public void userCanLogIn() {
         loginUserWithCredentials(loginPage.validUsername, loginPage.validPassword);
 
-        Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/inventory.html");
+        Assert.assertEquals(driver.getCurrentUrl(), inventoryPageURL);
         Assert.assertEquals(navbarPage.getTitleText(), "Products");
         Assert.assertTrue(isElementDisplayed(navbarPage.shoppingCart));
     }
 
-    @Test
+    @Test(priority = 20)
     public void userCannotLogInInvalidUsername() {
         loginUserWithCredentials(loginPage.invalidUsername, loginPage.validPassword);
 
-        Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/");
+        Assert.assertEquals(driver.getCurrentUrl(), loginPageURL);
         Assert.assertEquals(loginPage.getErrorText(), "Epic sadface: Username and password do not match any user in this service");
     }
 
-    @Test
+    @Test(priority = 30)
     public void userCannotLogInInvalidPassword() {
         loginUserWithCredentials(loginPage.validUsername, loginPage.invalidPassword);
 
-        Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/");
+        Assert.assertEquals(driver.getCurrentUrl(), loginPageURL);
         Assert.assertEquals(loginPage.getErrorText(), "Epic sadface: Username and password do not match any user in this service");
     }
 
-    @Test
+    @Test(priority = 40)
     public void userCannotLogInEmptyUsernameField() {
         loginUserWithCredentials("", loginPage.validPassword);
 
-        Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/");
+        Assert.assertEquals(driver.getCurrentUrl(), loginPageURL);
         Assert.assertEquals(loginPage.getErrorText(), "Epic sadface: Username is required");
     }
 
-    @Test
+    @Test(priority = 50)
     public void userCannotLogInEmptyPasswordField() {
         loginUserWithCredentials(loginPage.validUsername, "");
 
-        Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/");
+        Assert.assertEquals(driver.getCurrentUrl(), loginPageURL);
         Assert.assertEquals(loginPage.getErrorText(), "Epic sadface: Password is required");
     }
 
-    @Test
+    @Test(priority = 60)
     public void userCannotLogInEmptyFields() {
-        loginUserWithCredentials("", "");
+        loginPage.clickOnLoginButton();
 
-        Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/");
+        Assert.assertEquals(driver.getCurrentUrl(), loginPageURL);
         Assert.assertEquals(loginPage.getErrorText(), "Epic sadface: Username is required");
     }
 }

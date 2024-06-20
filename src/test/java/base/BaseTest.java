@@ -22,6 +22,7 @@ public class BaseTest {
 
     // URLs
     public String loginPageURL = "https://www.saucedemo.com/";
+    public String inventoryPageURL = "https://www.saucedemo.com/inventory.html";
     public String checkoutStepTwoPageURL = "https://www.saucedemo.com/checkout-step-two.html";
     public String checkoutStepOnePageURL = "https://www.saucedemo.com/checkout-step-one.html";
     public String checkoutCompletePageURL = "https://www.saucedemo.com/checkout-complete.html";
